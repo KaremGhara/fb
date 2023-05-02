@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "786275955212",
+    "project_id": "fbloginrn",
+    "storage_bucket": "fbloginrn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:786275955212:android:4087aaf238a3b54038b429",
+        "android_client_info": {
+          "package_name": "com.fb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "786275955212-uda06lv1qj0e89ri7ke7jkhfqlmj393g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeF5evQk80zmxnnwcPB1hQy4bqb0M6fL4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "786275955212-uda06lv1qj0e89ri7ke7jkhfqlmj393g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
