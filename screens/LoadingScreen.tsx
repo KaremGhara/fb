@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 // import { StackNavigationProp } from '@react-navigation/stack';
 // import LoginScreen from './LoginScreen';
-
+import stylesSheet from '../components/stylesSheet'
 
 
 
@@ -14,7 +14,7 @@ import { useNavigation } from '@react-navigation/native';
   
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-const LoadingScreen = ()=>{
+const LoadingScreen = (props)=>{
 
     const navigation=useNavigation()
 
@@ -23,7 +23,7 @@ const LoadingScreen = ()=>{
     return(
         <View style={styles.container}>
             <View >
-                <Logo/>
+                <Logo style={stylesSheet(props).logo}/>
                 
             </View>
             <View>

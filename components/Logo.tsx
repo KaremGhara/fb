@@ -1,11 +1,12 @@
 import {View,Image,StyleSheet, ImageStyle, StyleProp} from 'react-native';
 
 
-
-const Logo=()=>{
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+const Logo=({style})=>{
     return(
         <View >
-            <Image style={styles.logo} source={require('../assets/newLogo.png')}/>
+            <Image style={style} source={require('../assets/newLogo.png')}/>
         </View>
     )
 }

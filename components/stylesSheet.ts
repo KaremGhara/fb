@@ -52,6 +52,20 @@ const styles = (props) => StyleSheet.create({
         borderRadius:10,
         width:335
     },
+    logo:{
+        marginBottom:450,
+        justifyContent:'center',
+        alignItems:'center',
+        alignSelf:'center'
+        
+    },
+    logo2:{
+        justifyContent:'center',
+        alignItems:'center',
+        alignSelf:'center'
+        
+    }
+   
     
 })
 

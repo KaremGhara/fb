@@ -37,7 +37,7 @@ const RegisterScreen=(props)=>{
         <ScrollView>
         <KeyboardAvoidingView  behavior={Platform.OS === 'ios' ? 'padding' : 'position'}>
             <View style={styles.container} >
-                <Logo/>
+                <Logo style={stylesSheet(props).logo}/>
             </View>
             <View style={styles.fieldsContainer}>
             

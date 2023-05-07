@@ -5,7 +5,8 @@ import LoginScreen from './screens/LoginScreen';
 import auth from '@react-native-firebase/auth';
 import { useState,useEffect } from 'react';
 import RegisterScreen from './screens/RegisterScreen';
-
+import LandingPage from './screens/LandingPage';
+import  { StackNavigaitor } from './components/TabNavigator';
 const Stack = createNativeStackNavigator();
 
 function App() {
@@ -21,11 +22,7 @@ useEffect(() => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='LoadingScreen'>
-      <Stack.Screen name="LoadingScreen" component={LoadingScreen} /> 
-      <Stack.Screen name="RegisterScreen" component={RegisterScreen} /> 
-      <Stack.Screen name="LoginScreen" component={LoginScreen} /> 
-      </Stack.Navigator>
+    <StackNavigaitor/>
     </NavigationContainer>
   );
 }

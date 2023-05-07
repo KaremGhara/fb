@@ -6,10 +6,12 @@ import  stylesSheet  from '../components/stylesSheet';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useState } from 'react';
 import auth from '@react-native-firebase/auth';
+import { useNavigation } from '@react-navigation/native';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const LoginScreen=(props)=>{
 
+    const navigation=useNavigation();
     
 
     const [email,setEmail]=useState('')
@@ -20,11 +22,12 @@ const LoginScreen=(props)=>{
     }
 
    const handleLogin=()=>{
-    // console.log(newUser);
     
     auth().signInWithEmailAndPassword(user.email,user.password)
     .then(()=>{
-        console.log(user.email+" Has been signed in");
+        console.log(user.email+" Has logged in successfully");
+        
+        navigation.navigate('LandingPage');
         
     })
    }
@@ -33,7 +36,7 @@ const LoginScreen=(props)=>{
         <ScrollView>
         <KeyboardAvoidingView  behavior={Platform.OS === 'ios' ? 'padding' : 'position'}>
             <View style={styles.container} >
-                <Logo/>
+                <Logo  style={stylesSheet(props).logo2} />
             </View>
             <View style={styles.fieldsContainer}>
             
@@ -103,6 +106,8 @@ const styles=StyleSheet.create({
     container:{
         backgroundColor:'#262146',
         height:250,
+        alignItems:"center",
+        justifyContent:'center'
         
     },
     fieldsContainer:{
