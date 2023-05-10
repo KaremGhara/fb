@@ -7,26 +7,39 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { useState } from 'react';
 import auth from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { signInUpdate } from '../redux/userAuthSlice';
+import { fetchPosts } from '../fetchDatas/fetchData';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const LoginScreen=(props)=>{
-
+    const dispatch=useDispatch();
     const navigation=useNavigation();
-    
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+    const isLoggedin=useSelector(state=> state.user.value)
 
     const [email,setEmail]=useState('')
     const [password,setPassword]= useState('');
     const user={
         email:email,
-        password:password
+        password:password,
+        isLoggedin:isLoggedin,
+        
     }
 
    const handleLogin=()=>{
     
     auth().signInWithEmailAndPassword(user.email,user.password)
-    .then(()=>{
-        console.log(user.email+" Has logged in successfully");
+    .then((result)=>{
+        dispatch(signInUpdate());
         
+        
+        
+        
+        
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
         navigation.navigate('LandingPage');
         
     })

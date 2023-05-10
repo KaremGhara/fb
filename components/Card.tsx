@@ -5,10 +5,13 @@ import CustomButton from './Button';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const Card=({props})=>{
+   
+
+    const imageUrl: string = String(props.image);
     return(
     <View style={styles.container}>
         <View >
-        <Image  source={props.image}/>
+       <Image source={props.image} />
         </View>
         <View>
             <View>
@@ -41,8 +44,8 @@ const styles=StyleSheet.create({
         borderRadius: 20,
         alignSelf:'center',
         backgroundColor:'#FFFFFF',
+        margin: 20
     },
-
     time:{
         fontFamily:'Roboto',
         fontWeight:'400',

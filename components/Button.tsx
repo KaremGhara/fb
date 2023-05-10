@@ -1,19 +1,18 @@
 import {View,Text, StyleSheet, Image, Pressable, StyleProp, ViewStyle} from 'react-native'
-import stylesSheet from './stylesSheet'
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const CustomButton=({style,text,anyFun})=>{
-     const renderPermissionText = (value: String) => {
-        switch (value) {
-          case 'Partner':
-          case '1KPartner':
-          case 'BusinessPartner':
-            return <Image   source={require('../assets/arrow.png')}/>
-          default:
-            return null;
-        }
-      };
+    //  const renderPermissionText = (value: String) => {
+    //     switch (value) {
+    //       case 'Partner':
+    //       case '1KPartner':
+    //       case 'BusinessPartner':
+    //         return <Image   source={require('../assets/arrow.png')}/>
+    //       default:
+    //         return null;
+    //     }
+    //   };
     return(
         
         <View style={style}>

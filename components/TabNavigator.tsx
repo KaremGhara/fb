@@ -46,16 +46,16 @@ const TabNavigaitor=()=>{
 
     )
 }
-const DraweNavigation=()=>{
-  const Drawer = createDrawerNavigator();
+// const DraweNavigation=()=>{
+//   const Drawer = createDrawerNavigator();
 
-  return(
-    <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Notifications" component={NotificationsScreen} />
-      </Drawer.Navigator>
-  )
-}
+//   return(
+//     <Drawer.Navigator initialRouteName="Home">
+//         <Drawer.Screen name="Home" component={HomeScreen} />
+//         <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+//       </Drawer.Navigator>
+//   )
+// }
 
 const StackNavigaitor=()=>{
     const Stack = createNativeStackNavigator();

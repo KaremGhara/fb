@@ -1,26 +1,36 @@
-import {View,Text, StyleSheet, Image, Pressable, ScrollView} from 'react-native';
+import {View,Text, StyleSheet, Image, Pressable, ScrollView, ActivityIndicator} from 'react-native';
 import Logo from '../components/Logo';
+// import { useDispatch } from 'react-redux';
 import { Dropdown } from 'react-native-element-dropdown';
-
 // import {TabNavigaitor} from '../components/TabNavigator'
 import stylesSheet from '../components/stylesSheet'
 import auth from '@react-native-firebase/auth'
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import Card from '../components/Card';
+import { fetchPosts } from '../fetchDatas/fetchData';
+import { useDispatch, useSelector } from 'react-redux';
+import {getPostsStat,getAllPosts} from '../redux/newsSlicer'
 const LandingPage = ()=>{
-    const [value, setValue] = useState(null);
-    const data = [
-        { label: 'Item 1', value: '1' },
-        { label: 'Item 2', value: '2' },
-        { label: 'Item 3', value: '3' },
-        { label: 'Item 4', value: '4' },
-        { label: 'Item 5', value: '5' },
-        { label: 'Item 6', value: '6' },
-        { label: 'Item 7', value: '7' },
-        { label: 'Item 8', value: '8' },
-      ];
+    const dispatch= useDispatch();
+    
+
+    const postStatus=useSelector(getPostsStat);
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+    const posts:any[]=useSelector(state=>state.article.posts);
+
+    useEffect(() => {
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+        dispatch(fetchPosts()).then(() => {
+        //   console.log(posts[0].articles[0].author);
+        });
+      }, [dispatch]);
+      
+   
+    
       const props={
-        image:require('../assets/image.png'),
+       
         time:"Friday Jun 25, 2021",
         title:"China's renewed crypto crackdown wipes nearly $300 billion off the market as bitcoin slides ",
         headlineSource:"Arjun Kharpal, CNBC",
@@ -29,8 +39,6 @@ const LandingPage = ()=>{
       }
     return(
         <ScrollView>
-
-      
         <View>
             <View style={styles.header}>
                 <Logo style={styles.loginLogo}/>
@@ -53,7 +61,26 @@ const LandingPage = ()=>{
             <View>
                 <Text style={styles.preCardText}>Top Headlines in Israel</Text>
                 <View style={{margin:20}}>
-                <Card props={props}  />
+  
+                {postStatus === "loading" ? (
+  <ActivityIndicator size="large" color="#0000ff" />
+) : (
+  posts.map((post, index) => {
+    console.log(post.articles[index].urlToImage);
+    let props = {
+    image:require('../assets/image.png'),
+      time: post.articles[index].publishedAt,
+      title: post.articles[index].title,
+      headlineSource: post.articles[index].source.id,
+      content: post.articles[index].content,
+      text: "NAVIGATE TO DISPATCH",
+    };
+
+    return <Card key={index} props={props} />;
+  })
+)}
+
+                
                 </View>
             </View>
         </View>

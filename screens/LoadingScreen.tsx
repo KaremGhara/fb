@@ -27,7 +27,11 @@ const LoadingScreen = (props)=>{
                 
             </View>
             <View>
-            <Text style={styles.text} onPress={()=>{navigation.navigate('RegisterScreen')}}>Dispatcher</Text>
+                
+            <Text style={styles.text} onPress={()=>{
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+                navigation.navigate('RegisterScreen')}}>Dispatcher</Text>
             </View>
         </View>
     );
