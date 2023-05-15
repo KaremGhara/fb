@@ -29,10 +29,11 @@ const ArticleSlice=createSlice({
         .addCase(fetchPosts.fulfilled,(state,action)=>{
            state.status="successed";
             
-            
+           
            
             state.posts=state.posts.concat(action.payload)
             
+            state.isLoading = false
             
             
             

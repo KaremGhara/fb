@@ -10,14 +10,42 @@ import Card from '../components/Card';
 import { fetchPosts } from '../fetchDatas/fetchData';
 import { useDispatch, useSelector } from 'react-redux';
 import {getPostsStat,getAllPosts} from '../redux/newsSlicer'
+import { FlatList } from 'react-native-gesture-handler';
+
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+function renderItems({ item, index }) {
+    if (!item.articles || !item.articles[index] || !item.articles[index].urlToImage) {
+      // Handle the case when the required data is not available
+      return null; // or return a placeholder component
+    }
+  
+    let props = {
+      image: item.articles[index].urlToImage,
+      time: item.articles[index].publishedAt,
+      title: item.articles[index].title,
+      headlineSource: item.articles[index].source.id,
+      content: item.articles[index].content,
+      text: "NAVIGATE TO DISPATCH",
+    };
+  
+    return <Card props={props} />;
+  }
+
+
+
+
 const LandingPage = ()=>{
     const dispatch= useDispatch();
     
 
-    const postStatus=useSelector(getPostsStat);
+    // const postStatus=useSelector(getPostsStat);
                         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
     const posts:any[]=useSelector(state=>state.article.posts);
+                        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+    const isLoading=useSelector(state=>state.article.isLoading)
 
     useEffect(() => {
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -29,16 +57,8 @@ const LandingPage = ()=>{
       
    
     
-      const props={
-       
-        time:"Friday Jun 25, 2021",
-        title:"China's renewed crypto crackdown wipes nearly $300 billion off the market as bitcoin slides ",
-        headlineSource:"Arjun Kharpal, CNBC",
-        content:"On Friday, Chinese Vice Premier Liu He said it is necessary to “crack down on Bitcoin mining and trading behavior” to prevent risks to the “social field.” For a long time, Chinese authorities have been concerned about the speculative nature of cryptocurrencies ...",
-        text:'Navigate to dispatch'
-      }
+  
     return(
-        <ScrollView>
         <View>
             <View style={styles.header}>
                 <Logo style={styles.loginLogo}/>
@@ -62,13 +82,15 @@ const LandingPage = ()=>{
                 <Text style={styles.preCardText}>Top Headlines in Israel</Text>
                 <View style={{margin:20}}>
   
-                {postStatus === "loading" ? (
+                {/* {postStatus === "loading" ? (
   <ActivityIndicator size="large" color="#0000ff" />
 ) : (
+    <ScrollView>
+        {
   posts.map((post, index) => {
     console.log(post.articles[index].urlToImage);
     let props = {
-    image:require('../assets/image.png'),
+    image:post.articles[index].urlToImage,
       time: post.articles[index].publishedAt,
       title: post.articles[index].title,
       headlineSource: post.articles[index].source.id,
@@ -77,14 +99,24 @@ const LandingPage = ()=>{
     };
 
     return <Card key={index} props={props} />;
+  
   })
-)}
+}
+  </ScrollView>
+)} */}
+
+{isLoading ? <ActivityIndicator size="large" color="#0000ff" />: <FlatList
+              data={posts}
+              renderItem={renderItems}
+              keyExtractor={(item,index)=>index.toString()}
+              />  }
+              
+
 
                 
                 </View>
             </View>
         </View>
-        </ScrollView>
     )
 }
 

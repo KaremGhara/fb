@@ -11,7 +11,7 @@ const Card=({props})=>{
     return(
     <View style={styles.container}>
         <View >
-       <Image source={props.image} />
+       <Image style={{width:343,height:149}} source={{uri:imageUrl}} />
         </View>
         <View>
             <View>
