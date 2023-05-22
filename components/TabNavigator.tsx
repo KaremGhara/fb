@@ -61,8 +61,7 @@ const StackNavigaitor=()=>{
     const Stack = createNativeStackNavigator();
 
 return (
-      <Stack.Navigator screenOptions={{headerShown: false}} initialRouteName='LoadingScreen'>
-      <Stack.Screen name="LoadingScreen" component={LoadingScreen} /> 
+      <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="RegisterScreen" component={RegisterScreen} /> 
       <Stack.Screen name="LoginScreen" component={LoginScreen} /> 
       <Stack.Screen name="LandingPage" component={TabNavigaitor} />

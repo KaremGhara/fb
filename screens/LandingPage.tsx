@@ -81,29 +81,6 @@ const LandingPage = ()=>{
             <View>
                 <Text style={styles.preCardText}>Top Headlines in Israel</Text>
                 <View style={{margin:20}}>
-  
-                {/* {postStatus === "loading" ? (
-  <ActivityIndicator size="large" color="#0000ff" />
-) : (
-    <ScrollView>
-        {
-  posts.map((post, index) => {
-    console.log(post.articles[index].urlToImage);
-    let props = {
-    image:post.articles[index].urlToImage,
-      time: post.articles[index].publishedAt,
-      title: post.articles[index].title,
-      headlineSource: post.articles[index].source.id,
-      content: post.articles[index].content,
-      text: "NAVIGATE TO DISPATCH",
-    };
-
-    return <Card key={index} props={props} />;
-  
-  })
-}
-  </ScrollView>
-)} */}
 
 {isLoading ? <ActivityIndicator size="large" color="#0000ff" />: <FlatList
               data={posts}

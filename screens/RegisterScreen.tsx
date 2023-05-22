@@ -4,9 +4,10 @@ import CustomButton from '../components/Button';
 
 import  stylesSheet  from '../components/stylesSheet';
 import { ScrollView } from 'react-native-gesture-handler';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import auth from '@react-native-firebase/auth';
 import { useNavigation } from '@react-navigation/native';
+import SplashScreen from 'react-native-splash-screen';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const RegisterScreen=(props)=>{
@@ -19,9 +20,14 @@ const RegisterScreen=(props)=>{
         email:email,
         password:password
     }
+    useEffect(()=>{
+        
+  SplashScreen.hide();
+})
+    
 
    const handleRegister=()=>{
-    // console.log(newUser);
+    console.log(newUser);
     
     auth().createUserWithEmailAndPassword(newUser.email,newUser.password).then(()=>{
         console.log("User Craete!");

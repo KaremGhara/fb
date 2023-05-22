@@ -29,22 +29,14 @@ const LoginScreen=(props)=>{
     }
 
    const handleLogin=()=>{
+   
+        
+        
+         auth().signInWithEmailAndPassword(user.email, user.password).then(()=>{
+            navigation.navigate("LandingPage")
+         })
+      }
     
-    auth().signInWithEmailAndPassword(user.email,user.password)
-    .then((result)=>{
-        dispatch(signInUpdate());
-        
-        
-        
-        
-        
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-        navigation.navigate('LandingPage');
-        
-    })
-   }
-
     return(
         <ScrollView>
         <KeyboardAvoidingView  behavior={Platform.OS === 'ios' ? 'padding' : 'position'}>
